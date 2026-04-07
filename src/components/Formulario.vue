@@ -16,6 +16,11 @@ const handleSiguiente = () => pasoActual.value < 2 ? pasoActual.value++ : pasoAc
 const handleSubmit = () => {
   console.log('Formuario enviado')
   console.table(store.state.formulario)
+  // Restaurar paso del formulario
+  pasoActual.value = 1
+
+  // Limpiar datos del formulario
+  store.commit('LIMPIAR_FORMULARIO')
 }
 </script>
 

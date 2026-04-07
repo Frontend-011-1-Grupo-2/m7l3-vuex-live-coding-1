@@ -29,6 +29,16 @@ const store = createStore({
     ACTUALIZAR_CAMPO(state, { campo, valor }) {
       // no se usa notación de punto con variables. Porque buscará el nombre de la variable como propiedad del objeto. P.ej: state.formulario.campo -> objeto formulario no tiene la propiedad 'campo'
       state.formulario[campo] = valor
+    },
+    LIMPIAR_FORMULARIO(state) {
+      state.formulario = {
+        nombre: '',
+        email: '',
+        edad: null,
+        hobby: '',
+        colorFavorito: '#ffffff',
+        bandaFavorita: ''
+      }
     }
   },
   actions: {
