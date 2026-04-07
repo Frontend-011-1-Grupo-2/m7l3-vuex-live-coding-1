@@ -4,7 +4,15 @@ import { createStore } from 'vuex'
 const store = createStore({
   state() {
     return {
-      contador: 0
+      contador: 0,
+      formulario: {
+        nombre: '',
+        email: '',
+        edad: null,
+        hobby: '',
+        colorFavorito: '#ffffff',
+        bandaFavorita: ''
+      }
     }
   },
   mutations: {
@@ -16,6 +24,11 @@ const store = createStore({
     },
     RESET_CONTADOR(state) {
       state.contador = 0
+    },
+    // Formulario
+    ACTUALIZAR_CAMPO(state, { campo, valor }) {
+      // no se usa notación de punto con variables. Porque buscará el nombre de la variable como propiedad del objeto. P.ej: state.formulario.campo -> objeto formulario no tiene la propiedad 'campo'
+      state.formulario[campo] = valor
     }
   },
   actions: {
@@ -35,6 +48,9 @@ const store = createStore({
       } else {
         commit('RESET_CONTADOR')
       }
+    },
+    actualizarCampo({ commit }, payload) {
+      commit('ACTUALIZAR_CAMPO', payload)
     }
   },
   getters: {
